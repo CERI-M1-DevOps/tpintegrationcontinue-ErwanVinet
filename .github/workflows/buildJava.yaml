@@ -13,3 +13,5 @@ jobs:
           distribution: 'corretto'
       - name: Run Maven #Etape 3
         run: mvn -B package
+      - name: Analyse du Code
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar-Dsonar.projectKey=$(echo ${{ github.repository }} | sed 's-/-_-')
