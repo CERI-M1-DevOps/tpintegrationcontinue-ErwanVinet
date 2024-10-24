@@ -14,4 +14,4 @@ jobs:
           java-version: 21
           distribution: 'corretto'
       - name: Run Maven
-        run: mvn –B package --file /pom.xml
+        run: mvn –B package --file pom.xml
