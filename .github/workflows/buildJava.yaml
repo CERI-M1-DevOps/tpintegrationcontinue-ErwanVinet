@@ -14,4 +14,6 @@ jobs:
       - name: Run Maven #Etape 3
         run: mvn -B package
       - name: Analyse du Code
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar-Dsonar.projectKey=$(echo ${{ github.repository }} | sed 's-/-_-')
