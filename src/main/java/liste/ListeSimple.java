@@ -91,7 +91,7 @@ public class ListeSimple {
                 suivant = suivant.getSuivant();
             }
             return courant;
-        }
+        } //test
     }
 
     public void inverser() {
