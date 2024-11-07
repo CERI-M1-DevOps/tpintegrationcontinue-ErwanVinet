@@ -257,84 +257,48 @@ class ListeSimpleTest {
     }
 
     @Test
-
     void modifiePremierElementPresent() {
-
         listeATester.ajout(1);
-
         listeATester.ajout(2);
-
         listeATester.ajout(3);
-
         listeATester.modifiePremier(2, 4);  // Modifie le premier élément "2" trouvé
-
         assertEquals("ListeSimple(Noeud(3), Noeud(4), Noeud(1))", listeATester.toString());
-
     }
 
     @Test
-
     void modifiePremierElementAbsent() {
-
         listeATester.ajout(1);
-
         listeATester.ajout(2);
-
         listeATester.ajout(3);
-
         listeATester.modifiePremier(4, 5);  // L'élément "4" n'existe pas, donc aucune modification
-
         assertEquals("ListeSimple(Noeud(3), Noeud(2), Noeud(1))", listeATester.toString());
-
     }
 
     @Test
-
     void supprimePremierElementPresentEnTete() {
-
         listeATester.ajout(1);
-
         listeATester.ajout(2);
-
         listeATester.ajout(3);
-
         listeATester.supprimePremier(3);  // L'élément "3" est en tête
-
         assertEquals("ListeSimple(Noeud(2), Noeud(1))", listeATester.toString());
-
     }
 
     @Test
-
     void supprimePremierElementAbsent() {
-
         listeATester.ajout(1);
-
         listeATester.ajout(2);
-
         listeATester.ajout(3);
-
         listeATester.supprimePremier(4);  // L'élément "4" n'existe pas
-
         assertEquals("ListeSimple(Noeud(3), Noeud(2), Noeud(1))", listeATester.toString());
-
     }
 
     @Test
-
     void echangerMemeNoeud() {
-
         listeATester.ajout(1);
-
         listeATester.ajout(2);
-
         listeATester.ajout(3);
-
         Noeud node = listeATester.tete;
-
         listeATester.echanger(node, node);  // Echanger le même nœud ne doit rien changer
-
         assertEquals("ListeSimple(Noeud(3), Noeud(2), Noeud(1))", listeATester.toString());
-
     }
 }
