@@ -59,7 +59,19 @@ class ListeSimpleTest {
         listeATester.ajout(3);
         listeATester.modifiePremier(2, 4);
         assertEquals("ListeSimple(Noeud(3), Noeud(4), Noeud(1))", listeATester.toString());
-        assertEquals(4, listeATester.tete.getSuivant().getElement());
+        assertEquals(4, listeATester.tete.getSuivant().getElement());    public void modifiePremier(Object element, Object nouvelleValeur) {
+
+        Noeud courant = tete;
+
+        while (courant != null && courant.getElement() != element)
+
+            courant = courant.getSuivant();
+
+        if (courant != null)
+
+            courant.setElement(nouvelleValeur);
+
+    }
     }
 
     @Test
@@ -254,5 +266,32 @@ class ListeSimpleTest {
         listeATester.echanger(r1, r2);
         System.out.println(listeATester);
         assertEquals("ListeSimple(Noeud(4), Noeud(2), Noeud(3), Noeud(1), Noeud(5))", listeATester.toString());
+    }
+
+    @Test
+    void modifiePremierElementPresent() {
+        listeATester.ajout(1);
+        listeATester.ajout(2);
+        listeATester.ajout(3);
+        listeATester.modifiePremier(2, 4);  // Modifie le premier élément "2" trouvé
+        assertEquals("ListeSimple(Noeud(3), Noeud(4), Noeud(1))", listeATester.toString());
+    }
+
+    @Test
+    void modifiePremierElementAbsent() {
+        listeATester.ajout(1);
+        listeATester.ajout(2);
+        listeATester.ajout(3);
+        listeATester.modifiePremier(4, 5);  // L'élément "4" n'existe pas, donc aucune modification
+        assertEquals("ListeSimple(Noeud(3), Noeud(2), Noeud(1))", listeATester.toString());
+    }
+
+    @Test
+    void supprimePremierElementPresentEnTete() {
+        listeATester.ajout(1);
+        listeATester.ajout(2);
+        listeATester.ajout(3);
+        listeATester.supprimePremier(3);  // L'élément "3" est en tête
+        assertEquals("ListeSimple(Noeud(2), Noeud(1))", listeATester.toString());
     }
 }
