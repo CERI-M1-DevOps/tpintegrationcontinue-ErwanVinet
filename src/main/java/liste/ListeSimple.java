@@ -8,11 +8,26 @@ public class ListeSimple {
         return size;
     }
 
+    /**
+     * Ajoute un nouvel élément au début de la liste.
+     * Cette méthode crée un nouveau nœud contenant l'élément spécifié et l'ajoute en tête de la liste.
+     * Le nœud précédent en tête devient le suivant du nouveau nœud.
+     *
+     * @param element L'élément à ajouter à la liste.
+     */
     public void ajout(int element) {
         tete = new Noeud(element, tete);
         size++;
     }
 
+    /**
+     * Modifie la première occurrence de l'élément spécifié dans la liste par la nouvelle valeur.
+     * La méthode parcourt la liste depuis la tête, trouve le premier nœud qui contient l'élément
+     * et remplace sa valeur par la nouvelle valeur fournie.
+     *
+     * @param element L'élément à chercher dans la liste pour modification.
+     * @param nouvelleValeur La nouvelle valeur à attribuer à l'élément trouvé.
+     */
     public void modifiePremier(Object element, Object nouvelleValeur) {
         Noeud courant = tete;
         while (courant != null && courant.getElement() != element)
@@ -21,6 +36,14 @@ public class ListeSimple {
             courant.setElement(nouvelleValeur);
     }
 
+    /**
+     * Modifie toutes les occurrences de l'élément spécifié dans la liste par la nouvelle valeur.
+     * La méthode parcourt la liste depuis la tête et, chaque fois qu'un nœud contient l'élément
+     * à modifier, elle remplace sa valeur par la nouvelle valeur fournie.
+     *
+     * @param element L'élément à chercher dans la liste pour modification.
+     * @param nouvelleValeur La nouvelle valeur à attribuer à toutes les occurrences de l'élément trouvé.
+     */
     public void modifieTous(Object element, Object nouvelleValeur) {
         Noeud courant = tete;
         while (courant != null) {
@@ -67,6 +90,15 @@ public class ListeSimple {
        tete = supprimeTousRecurs(element, tete);
     }
 
+    /**
+     * Supprime toutes les occurrences de l'élément spécifié dans la liste de manière récursive.
+     * La méthode parcourt la liste depuis la tête et, chaque fois qu'un nœud contient l'élément
+     * à supprimer
+     *
+     * @param element L'élément à supprimer de la liste.
+     * @param tete Le nœud actuel de la liste qui est examiné pour savoir s'il contient l'élément à supprimer.
+     * @return Le nouveau nœud tête de la liste après suppression des éléments, ou null si la liste est vide.
+     */
     public Noeud supprimeTousRecurs(Object element, Noeud tete) {
         if (tete != null) {
             Noeud suiteListe = supprimeTousRecurs(element, tete.getSuivant());
@@ -91,7 +123,7 @@ public class ListeSimple {
                 suivant = suivant.getSuivant();
             }
             return courant;
-        } //test
+        }
     }
 
     public void inverser() {
