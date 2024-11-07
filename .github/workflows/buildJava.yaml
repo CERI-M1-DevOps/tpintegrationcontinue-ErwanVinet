@@ -11,6 +11,13 @@ jobs:
         with:
           java-version: 21
           distribution: 'corretto'
+      - name: Cache Maven dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository  # Le répertoire de cache des dépendances Maven
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}  # Clé unique basée sur pom.xml
+          restore-keys: |
+              ${{ runner.os }}-maven-  # Clé pour restaurer le cache si la clé exacte n'est pas trouvée
       - name: Analyse du Code
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
